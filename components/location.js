@@ -1,19 +1,15 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-export default class LocationComponent extends Component {
-  componentDidMount() {
-    console.log("LocationComponent#componentDidMount ", this.props.location);
-  }
+export default ({ location }) => {
+  const Coordinates = () => <Text style={styles.gps}>{location.latitude}, {location.longitude}</Text>
 
-  render(){
-    return (
-      <View style={styles.container}>
-        <Text style={styles.gps}>{this.props.location.latitude}, {this.props.location.longitude}</Text>
-      </View>
-    );
-  }
+  return (
+    <View style={styles.container}>
+      { location !== undefined ? <Coordinates /> : <ActivityIndicator /> }
+    </View> 
+  );
 }
 
 const styles = StyleSheet.create({

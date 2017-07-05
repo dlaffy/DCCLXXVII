@@ -1,34 +1,19 @@
 import React, { Component } from 'react';
-import { ActivityIndicator } from 'react-native';
 import { connect } from 'react-redux';
-import * as locationActions from '../store/location/actions';
-import * as locationSelectors from '../store/location/reducer';
-import LocationComponent from '../components/location';
+
+import Location from '../components/location';
 
 class IndexScreen extends Component {
-  componentWillMount() {
-    this.props.dispatch( locationActions.findLocation() );
-  }
-
   render () {
-    if (!this.props.location) return this.renderLoading();
+    const hardCodedValues = {
+      latitude: 37.785834,
+      longitude: -122.406417
+    }
 
     return (
-      <LocationComponent location={ this.props.location } />
+      <Location  />
     );
   }
-
-  renderLoading() {
-    return (
-      <ActivityIndicator />
-    )
-  }
 }
 
-function mapStateToProps( state ) {
-  return {
-    location: locationSelectors.getLocation(state)
-  };
-}
-
-export default connect(mapStateToProps)(IndexScreen);
+export default IndexScreen;
