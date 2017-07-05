@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
+import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-export default ({ location }) => {
+const Location = ({ location }) => {
   const Coordinates = () => <Text style={styles.gps}>{location.latitude}, {location.longitude}</Text>
 
   return (
@@ -27,3 +28,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
   }
 });
+
+const mapStateToProps = (state) => ({
+  location: state.location.location
+});
+
+export default connect(mapStateToProps)(Location);
