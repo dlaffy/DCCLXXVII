@@ -50,7 +50,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = ({
-  findLocation: (coords) => (dispatch) => dispatch({ type: "location.LOCATION_SET", coordinates: coords })
+  findLocation: (coords) => (dispatch) => dispatch({ type: "UPDATE_LOCATION", coordinates: coords })
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Location);
