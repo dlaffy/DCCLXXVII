@@ -5,11 +5,12 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 class Location extends Component {
   componentDidMount() {
+    const { findLocation } = this.props; 
     navigator.geolocation.getCurrentPosition(
       (position) => {
         const coordinates = { latitude: position.coords.latitude, longitude: position.coords.longitude }
         console.log("LocationService#getPhonesLocation ", coordinates);
-        return coordinates;
+        findLocation(coordinates);
       },
       (error) => {
         console.log("GeoError: ", error);
@@ -49,4 +50,8 @@ const mapStateToProps = (state) => ({
   location: state.location.location
 });
 
-export default connect(mapStateToProps)(Location);
+const mapDispatchToProps = ({
+  findLocation: (coords) => (dispatch) => dispatch({ type: "location.LOCATION_SET", coordinates: coords })
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Location);
