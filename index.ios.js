@@ -1,18 +1,9 @@
 import React, { Component } from 'react';
 import { AppRegistry } from 'react-native';
 import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
 
-import locationReducers from './components/Location/reducers';
 import App from './App';
-
-import {
-  createStore,
-  applyMiddleware,
-  combineReducers
-} from 'redux';
-
-const store = createStore( combineReducers({location: locationReducers}), applyMiddleware(thunk));
+import store from './store';
 
 export default class DCCLXXVII extends Component {
   render() {
