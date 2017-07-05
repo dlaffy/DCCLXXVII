@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-
 import Location from '../components/location';
 
 class IndexScreen extends Component {
@@ -11,7 +9,7 @@ class IndexScreen extends Component {
     }
 
     return (
-      <Location  />
+      <Location location={ hardCodedValues } />
     );
   }
 }
